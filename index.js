@@ -14,6 +14,21 @@ app.get('/', async (req, res) => {
     res.render("index.ejs", {articles : result.data.articles});
 })
 
+app.get('/IPL', async (req, res) => {
+    const result = await axios.get(`${url}?q=IPL&apiKey=${api_Key}`);
+    res.render("index.ejs", {articles : result.data.articles});
+});
+
+app.get('/Finance', async (req, res) => {
+    const result = await axios.get(`${url}?q=Finance&apiKey=${api_Key}`);
+    res.render("index.ejs", {articles : result.data.articles});
+});
+
+app.get('/Politics', async (req, res) => {
+    const result = await axios.get(`${url}?q=Politics&apiKey=${api_Key}`);
+    res.render("index.ejs", {articles : result.data.articles});
+});
+
 app.post('/search',async (req, res) => {
     var query = req.body.newsinput;
     const result = await axios.get(`${url}?q=${query}&apiKey=${api_Key}`);
