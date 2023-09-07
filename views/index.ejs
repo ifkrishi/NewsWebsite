@@ -12,9 +12,9 @@
             <a href="#"><img class="nav-logo" src="./NEWS LOGO.svg"> </a>
             <div class="nav-links">
                 <ul class="flex">
-                    <li class="hover-links">IPL</li>
-                    <li class="hover-links">Finance</li>
-                    <li class="hover-links">Politics</li>
+                    <a href="/IPL"><li class="hover-links">IPL</li></a>
+                    <a href="/Finance"><li class="hover-links">Finance</li></a>
+                    <a href="/Politics"><li class="hover-links">Politics</li></a>
                 </ul>
             </div>
             <div class="nav-search flex">
@@ -31,16 +31,18 @@
             <% if(locals.articles) {%>
                 <% articles.forEach(article => { %>
                     <% if(article.urlToImage && article.source.id) {%>
-                        <div class="card flex">
-                            <div class="card-header">
-                                <img id="news-img" src= <%= article.urlToImage %>>
+                        <a href=<%= article.url %> >
+                            <div class="card flex">
+                                <div class="card-header">
+                                    <img id="news-img" src= <%= article.urlToImage %>>
+                                </div>
+                                <div class="card-content flex">
+                                    <h3 id="news-title"><%= article.title %></h3>
+                                    <h6 id="news-source"><%= article.source.id %>, <%= article.publishedAt.slice(0,10)%></h6>
+                                    <p class="news-description" id="news-description"><%= article.description %></p>
+                                </div>
                             </div>
-                            <div class="card-content flex">
-                                <h3 id="news-title"><%= article.title %></h3>
-                                <h6 id="news-source"><%= article.source.id %>, <%= article.publishedAt.slice(0,10)%></h6>
-                                <p class="news-description" id="news-description"><%= article.description %></p>
-                            </div>
-                        </div>
+                        </a>
                     <% } %>
                 <% }); %>
             <% } %>
